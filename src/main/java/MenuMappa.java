@@ -12,8 +12,8 @@ public class MenuMappa {
 
 
     Menu menu = new Menu();
-    Rubrica rubrica = new Rubrica(new ArrayList<>());
-    ArrayList<Account> listaRubrica = new ArrayList<>();
+    Rubrica rubrica = new Rubrica();
+    ArrayList<Account> listaRubrica = new ArrayList<Account>();
     Map<Ruolo, ArrayList<Account>> mappa = rubrica.getMappa();
     String nomeBk = "";
     String importa;
@@ -68,12 +68,11 @@ public class MenuMappa {
                     addRubrica();
                     break;
                 case 3:
-                    if (rubrica.getArrayListAccount().size() > 0) {
+                   // if (rubrica.getArrayListAccount().size() > 0) {
                         if (!mappa.isEmpty()) {
                             rubrica.printAll(mappa);
-                        }
-                    } else {
-                        System.out.println("Mappa Vuota.");
+                        }else {
+                            System.out.println("Mappa Vuota.");
                     }
                     break;
                 case 4:
@@ -122,7 +121,7 @@ public class MenuMappa {
                     break;
                 case 6:
                     System.out.println("Inserisci il cognome da cercare : ");
-                    ArrayList<Account> risultatoArrayList = new ArrayList<>();
+                    ArrayList<Account> risultatoArrayList = new ArrayList<Account>();
                     risultatoArrayList = rubrica.search(new Scanner(System.in).next());
                     if(risultatoArrayList.size() <= 0){
                         System.err.println("Nessun cognome trovato.");

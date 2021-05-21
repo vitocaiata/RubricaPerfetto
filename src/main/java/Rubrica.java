@@ -138,7 +138,7 @@ public class Rubrica implements Actions, Filters {
 
     public void exportMapJson(String nomeFile){
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Modelli> mappaArray = new ArrayList<>();
+        ArrayList<Modelli> mappaArray = new ArrayList<Modelli>();
 
         if(nomeFile.length() == 0){
             System.out.println("Nome file da esportare : ");

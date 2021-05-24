@@ -1,4 +1,5 @@
 import models.Account;
+import models.Modelli;
 import models.Ruolo;
 import utils.Utils;
 
@@ -6,14 +7,15 @@ import utils.Utils;
 import java.util.*;
 
 import static java.lang.System.exit;
+import static java.lang.System.setOut;
 
 
 public class MenuMappa {
 
-
+    Ruolo ruolo ;
     Menu menu = new Menu();
-    Rubrica rubrica = new Rubrica();
-    ArrayList<Account> listaRubrica = new ArrayList<Account>();
+    Rubrica rubrica = new Rubrica(new ArrayList<Account>());
+    //ArrayList<Account> listaRubrica = new ArrayList<Account>();
     Map<Ruolo, ArrayList<Account>> mappa = rubrica.getMappa();
     String nomeBk = "";
     String importa;
@@ -32,9 +34,11 @@ public class MenuMappa {
         this.nomeBk = nomeBk;
     }
 
-    public void addRubrica(){
-        Ruolo ruolo = new Ruolo(new Scanner(System.in).next());
-        mappa.put(ruolo, rubrica.getArrayListAccount());
+    public void addRuolo(Ruolo ruolo){
+        ruolo = new Ruolo(new Scanner(System.in).next());
+        mappa.put(ruolo, new ArrayList<Account>());
+
+        System.out.println("ruolo aggiunto " + ruolo.getTipo());
     }
 
 
@@ -53,22 +57,25 @@ public class MenuMappa {
                 case 1:
                     if(this.mappa.isEmpty()){
                         System.out.println("\nAggiungi ruolo.");
-                        addRubrica();
+                        addRuolo(ruolo);
                     }else{
                         System.out.println("Quale ruolo vuoi riempire?");
-                        String pippo = new Scanner(System.in).next();
-                        for(Ruolo ruolo : mappa.keySet()){
-                            rubrica.setArrayListAccount(mappa.get(ruolo));
-                            scegliMenu(true);
-                            mappa.put(ruolo,rubrica.getArrayListAccount());
-                        }
+                        String ruoloRiempire = new Scanner(System.in).next();
+                        //System.out.println("ruolo riempire " + ruoloRiempire + "\n" + " get tipo " + ruolo.getTipo());
+                            for (Ruolo ruolo : mappa.keySet()) {
+                                if (ruolo.getTipo().equalsIgnoreCase(ruoloRiempire)) {
+                                    rubrica.setArrayListAccount(mappa.get(ruolo));
+                                    scegliMenu(true);
+                                    mappa.put(ruolo, rubrica.getArrayListAccount());
+                                }
+                            }
                     }
                     break;
                 case 2:
-                    addRubrica();
+                    System.out.println("Aggiunngi un ruolo.");
+                    addRuolo(ruolo);
                     break;
                 case 3:
-                   // if (rubrica.getArrayListAccount().size() > 0) {
                         if (!mappa.isEmpty()) {
                             rubrica.printAll(mappa);
                         }else {
@@ -148,7 +155,6 @@ public class MenuMappa {
                     System.out.println("Scelta non valida.");
             }
         }while(statoMenu);
-
     }
 }
 

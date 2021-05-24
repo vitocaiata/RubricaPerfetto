@@ -1,13 +1,12 @@
+package models;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import interfaces.Actions;
 import interfaces.Filters;
-import models.Account;
-import models.Modelli;
-import models.Ruolo;
 import utils.Utils;
 
-import java.io.File;
+
 import java.util.*;
 
 public class Rubrica implements Actions, Filters {
@@ -69,8 +68,9 @@ public class Rubrica implements Actions, Filters {
     public void update(String cognome, Account account) {
         if(this.accountArrayList.removeIf(e->e.getCognome().equals(cognome))){
             this.accountArrayList.add(account);
+            System.out.println("Account modificato con successo.");
         }else{
-            System.err.println("Nessun elemento trovato.");
+            System.err.println("Nessun account trovato.");
         }
 
 
@@ -88,22 +88,23 @@ public class Rubrica implements Actions, Filters {
 
     public void deleteAll(ArrayList<Account> rimuoviAccountArrayList) {
         this.accountArrayList.removeAll(rimuoviAccountArrayList);
-        System.out.println("Account eliminato con successo.");
+        System.out.println("Account eliminati con successo.");
     }
 
     public void del(String cognome){
         deleteAll(search(cognome));
+        System.out.println("Account eliminato con successo.");
     }
 
     public void exportJson(String fileName){
         Utils.writeFile(fileName, new Gson().toJson(this.accountArrayList));
-        System.out.println("Rubrica : " + fileName + " esportata.");
+        System.out.println("models.Rubrica : " + fileName + " esportata.");
     }
 
     public void importJson(String fileName) {
         try{
             this.accountArrayList.addAll(Arrays.asList(new Gson().fromJson(Utils.readFile(fileName), Account[].class)));
-            System.out.println("Rubrica : " + fileName + " importata.");
+            System.out.println("models.Rubrica : " + fileName + " importata.");
         }catch(JsonSyntaxException e){
             System.err.println("Errore parsing file " + fileName);
         }catch (Exception e){

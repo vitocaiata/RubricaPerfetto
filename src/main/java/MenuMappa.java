@@ -1,5 +1,5 @@
 import models.Account;
-import models.Modelli;
+import models.Rubrica;
 import models.Ruolo;
 import utils.Utils;
 
@@ -7,7 +7,6 @@ import utils.Utils;
 import java.util.*;
 
 import static java.lang.System.exit;
-import static java.lang.System.setOut;
 
 
 public class MenuMappa {
@@ -140,7 +139,7 @@ public class MenuMappa {
                     if(rubrica.getArrayListAccount().size() > 0) {
                         rubrica.printAll(rubrica.getArrayListAccount());
                     }else{
-                        System.err.println("Rubrica vuota.");
+                        System.err.println("models.Rubrica vuota.");
                     }
                     break;
                 case 8:

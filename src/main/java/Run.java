@@ -1,6 +1,6 @@
+import models.Rubrica;
 import utils.Utils;
 
-import java.util.ArrayList;
 import java.util.Properties;
 
 public class Run {
@@ -42,7 +42,7 @@ public class Run {
     }
 }
 
-    /*public static void decodeArgs(String[] args, Rubrica rubrica){
+    /*public static void decodeArgs(String[] args, models.Rubrica rubrica){
         MenuMappa menuMappa = new MenuMappa();
         for(int i = 0; i < args.length; i++){
             switch (args[i]){

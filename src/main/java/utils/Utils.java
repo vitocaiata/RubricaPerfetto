@@ -7,7 +7,7 @@ import static utils.GlobalParameters.*;
 
 public class Utils {
 
-    //public static String BASE_PATH = "C:/Users/vitoc/Desktop/Corso Aesys/Esercizi/Rubrica perfetto/src/main/";
+    //public static String BASE_PATH = "C:/Users/vitoc/Desktop/Corso Aesys/Esercizi/models.Rubrica perfetto/src/main/";
     //public static String RESOURCES_PATH = BASE_PATH + File.separator + "resources" + File.separator  ;
     //public static String EXT_JSON = ".json";
 

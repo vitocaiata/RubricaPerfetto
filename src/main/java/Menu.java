@@ -14,7 +14,7 @@ public class Menu {
         System.out.println("| 3) Cancella Contatto.        |");
         System.out.println("| 4) Importa Json.             |");
         System.out.println("| 5) Esporta Json.             |");
-        System.out.println("| 7) Stampa Rubrica.           |");
+        System.out.println("| 7) Stampa models.Rubrica.           |");
         System.out.println("| 8) Cancella un File.         |");
         System.out.println("| 9) Torna al menu precedente. |");
         System.out.println("* ---------------------------- *");

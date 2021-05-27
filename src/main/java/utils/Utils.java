@@ -7,32 +7,32 @@ import static utils.GlobalParameters.*;
 
 public class Utils {
 
-    //public static String BASE_PATH = "C:/Users/vitoc/Desktop/Corso Aesys/Esercizi/models.Rubrica perfetto/src/main/";
+    //public static String BASE_PATH = "C:/Users/vitoc/Desktop/Corso Aesys/Esercizi/Rubrica perfetto/src/main/";
     //public static String RESOURCES_PATH = BASE_PATH + File.separator + "resources" + File.separator  ;
     //public static String EXT_JSON = ".json";
 
-    public static String readFile(String fileName){
+    public static String readFile(String fileName) {
 
         String bodyFile = "";
         FileReader reader = null;
         String path = RESOURCES_PATH + File.separator + fileName + EXT_JSON;
 
-        try{
+        try {
             reader = new FileReader(RESOURCES_PATH + File.separator + fileName + EXT_JSON);
-            int i= 0;
-            while(i  != -1){
+            int i = 0;
+            while (i != -1) {
                 i = reader.read();
-                if(i != -1){
+                if (i != -1) {
                     bodyFile = bodyFile + (char) i;
                 }
             }
-        }catch(IOException e){
+        } catch (IOException e) {
             System.err.println("Errore lettura File " + e.getMessage());
-        } finally{
-            if(reader != null){
-                try{
+        } finally {
+            if (reader != null) {
+                try {
                     reader.close();
-                }catch(IOException e){
+                } catch (IOException e) {
                     System.err.println("Errore lettura File " + e.getMessage());
                 }
             }
@@ -109,6 +109,78 @@ public class Utils {
         return prop;
     }
 
+
+// metodi per i test
+    public static void cancellaFile(String fileName) {
+        File file = new File(LOGS_PATH + fileName);
+        if (file.delete()) {
+            System.out.println("Il file " + fileName + " è stato cancellato");
+        } else {
+            System.out.println("Il file " + fileName + " non può essere eliminato");
+        }
+    }
+
+    public static boolean nuovoFile(String fileName){
+
+        String path = LOGS_PATH + File.separator + fileName ;
+        try{
+            File file = new File(path);
+            if(file.exists()){
+                System.out.println("Il file " + path + " esiste");
+            }else if(file.createNewFile()){
+                System.out.println("Il file " + path +" è stato creato.");
+                return true;
+            }else{
+                System.out.println("Il file " + " non può essere creato.");
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static void createFile(String fileName, String body) {
+        String ciao = LOGS_PATH ;
+
+        try {
+            File file = new File(ciao,fileName);
+            FileWriter fw = new FileWriter(file);
+            fw.write(body);
+            fw.flush();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String leggiFile(String fileName) {
+
+        String bodyFile = "";
+        FileReader reader = null;
+        String path = LOGS_PATH + File.separator + fileName ;
+
+        try {
+            reader = new FileReader(LOGS_PATH + File.separator + fileName);
+            int i = 0;
+            while (i != -1) {
+                i = reader.read();
+                if (i != -1) {
+                    bodyFile = bodyFile + (char) i;
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Errore lettura File " + e.getMessage());
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    System.err.println("Errore lettura File " + e.getMessage());
+                }
+            }
+        }
+        return bodyFile;
+    }
 
 
     /*public static void deleteFile(String fileName) {

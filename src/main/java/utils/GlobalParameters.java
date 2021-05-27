@@ -12,6 +12,9 @@ public class GlobalParameters {
     public static final String PROPERTIES_PATH = RESOURCES_PATH + File.separator + "properties";
     public static String EXT_JSON = ".json";
     public static String EXT_PROPERTIES = ".properties";
+    public static final String LOGS_PATH = USER_DIR + File.separator + "logs";
+    public static String EXT_LOGS = ".log";
+
 
 
 

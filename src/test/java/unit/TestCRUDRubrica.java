@@ -191,7 +191,7 @@ public class TestCRUDRubrica {
 
     @Disabled
     @ParameterizedTest(name = "{0}")
-    @ValueSource(strings = {"\\" + "log.logs"})
+    @ValueSource(strings = {"\\" + "Topolino.logs"})
     @DisplayName("Leggi file")
     @Tag("file")
     @Order(13)
